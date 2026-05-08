@@ -1,0 +1,38 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
+import Doctors from './pages/Doctors';
+import BookAppointment from './pages/BookAppointment';
+import Profile from './pages/Profile';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Box minHeight="100vh" display="flex" flexDirection="column" bgcolor="#fff" color="#222">
+        <Navbar />
+        <Container component="main" sx={{ flexGrow: 1, py: 4 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/doctors" element={<Doctors />} />
+            <Route path="/book" element={<BookAppointment />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </Container>
+        <Footer />
+      </Box>
+    </BrowserRouter>
+  );
+}
+
+export default App;
