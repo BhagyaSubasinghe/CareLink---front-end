@@ -5,19 +5,26 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-600 text-white shadow">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <Link to="/" className="text-xl font-semibold">CareLink</Link>
+    <nav className="nav-bar">
+      <div className="nav-inner">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Link to="/" className="nav-brand">CareLink</Link>
           <span className="text-sm opacity-90 hidden sm:inline">Healthcare appointments</span>
         </div>
 
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/about" className="hover:underline">About Us</Link>
-          <Link to="/doctors" className="hover:underline">Doctors</Link>
-          <Link to="/pharmacy" className="hover:underline">Pharmacy</Link>
-          <Link to="/contact" className="hover:underline">Contacts</Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+          <div className="hidden md:flex nav-links">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/about" className="nav-link">About Us</Link>
+          <Link to="/doctors" className="nav-link">Doctors</Link>
+          <Link to="/pharmacy" className="nav-link">Pharmacy</Link>
+          <Link to="/contact" className="nav-link">Contacts</Link>
+          </div>
+
+          <div className="hidden md:flex nav-auth" style={{ alignItems: 'center', gap: 12 }}>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/register" className="nav-auth-btn">Register</Link>
+          </div>
         </div>
 
         <button
@@ -46,6 +53,8 @@ export default function Navbar() {
             <Link to="/doctors" onClick={() => setOpen(false)} className="block">Doctors</Link>
             <Link to="/pharmacy" onClick={() => setOpen(false)} className="block">Pharmacy</Link>
             <Link to="/contact" onClick={() => setOpen(false)} className="block">Contacts</Link>
+            <Link to="/login" onClick={() => setOpen(false)} className="block">Login</Link>
+            <Link to="/register" onClick={() => setOpen(false)} className="block">Register</Link>
           </div>
         </div>
       )}

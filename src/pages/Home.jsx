@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import DoctorCard from '../components/DoctorCard';
+import SearchBar from '../components/SearchBar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -17,6 +18,24 @@ const sampleDoctors = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const [selectedSpecialization, setSelectedSpecialization] = useState('');
+  const [selectedHospital, setSelectedHospital] = useState('');
+  const [selectedSearchDate, setSelectedSearchDate] = useState('');
+
+  const specializations = ['Cardiology', 'Dermatology', 'Pediatrics', 'Orthopedics'];
+  const hospitals = ['City Hospital', 'St. Marys', 'Central Clinic'];
+
+  function onSearch(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const params = new URLSearchParams();
+    if (search) params.set('q', search);
+    if (selectedSpecialization) params.set('spec', selectedSpecialization);
+    if (selectedHospital) params.set('hosp', selectedHospital);
+    if (selectedSearchDate) params.set('date', selectedSearchDate);
+    navigate({ pathname: '/doctors', search: params.toString() });
+  }
   return (
     <Container className="home-root">
       <section className="hero">
@@ -27,6 +46,21 @@ export default function Home() {
           <Typography variant="subtitle1" className="hero-sub">
             Find trusted doctors, book appointments in seconds, and manage your care in one place.
           </Typography>
+          <div className="hero-search">
+            <SearchBar
+              search={search}
+              setSearch={setSearch}
+              selectedSpecialization={selectedSpecialization}
+              setSelectedSpecialization={setSelectedSpecialization}
+              selectedHospital={selectedHospital}
+              setSelectedHospital={setSelectedHospital}
+              selectedSearchDate={selectedSearchDate}
+              setSelectedSearchDate={setSelectedSearchDate}
+              specializations={specializations}
+              hospitals={hospitals}
+              onSearch={onSearch}
+            />
+          </div>
           <div className="hero-ctas">
             <Button
               variant="contained"

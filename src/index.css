@@ -11,3 +11,100 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Tailwind-fallback utilities (minimal subset used by the app) */
+
+.container { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto }
+.px-4 { padding-left: 1rem; padding-right: 1rem }
+.py-3 { padding-top: .75rem; padding-bottom: .75rem }
+.p-6 { padding: 1.5rem }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem }
+.mb-8 { margin-bottom: 2rem }
+.mb-6 { margin-bottom: 1.5rem }
+
+.flex { display: flex }
+.grid { display: grid }
+.items-center { align-items: center }
+.justify-between { justify-content: space-between }
+.justify-center { justify-content: center }
+.flex-col { flex-direction: column }
+.gap-4 { gap: 1rem }
+.space-x-3 > * + * { margin-left: .75rem }
+
+.hidden { display: none }
+.block { display: block }
+.inline { display: inline }
+.text-xl { font-size: 1.25rem }
+.text-sm { font-size: .875rem }
+.font-semibold { font-weight: 600 }
+.opacity-90 { opacity: .9 }
+
+.bg-blue-600 { background-color: #2563eb }
+.bg-blue-700 { background-color: #1d4ed8 }
+.text-white { color: #fff }
+.bg-slate-100 { background-color: #f1f5f9 }
+.text-slate-600 { color: #475569 }
+
+.rounded-2xl { border-radius: 1rem }
+.rounded-xl { border-radius: .75rem }
+.rounded { border-radius: .25rem }
+.shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.12) }
+.shadow-md { box-shadow: 0 6px 18px rgba(2,6,23,0.06) }
+.border { border: 1px solid #e5e7eb }
+.border-gray-300 { border-color: #d1d5db }
+
+.hover\:underline:hover { text-decoration: underline }
+.hover\:bg-blue-700:hover { background-color: #1d4ed8 }
+
+.w-full { width: 100% }
+.h-12 { height: 3rem }
+.rounded-xl { border-radius: .75rem }
+.text-base { font-size: 1rem }
+.font-medium { font-weight: 500 }
+.bg-white { background: #fff }
+.focus\:ring-2:focus { outline: none; box-shadow: 0 0 0 4px rgba(37,99,235,0.12) }
+
+/* Simple grid helpers used in SearchBar */
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) }
+@media (min-width: 768px) {
+  .md\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) }
+}
+
+/* Responsive helpers (sm: 640px, md: 768px) */
+@media (min-width: 640px) {
+  .sm\:inline { display: inline }
+}
+@media (min-width: 768px) {
+  .md\:hidden { display: none }
+  .md\:flex { display: flex }
+}
+
+/* Small button helper approximations */
+.btn-primary { background: #2563eb; color: #fff; padding: .75rem 1.25rem; border-radius: .5rem; border: none; cursor: pointer }
+.btn-ghost { background: transparent; border: 1px solid rgba(55,65,81,0.08); padding: .6rem 1rem; border-radius: .5rem }
+
+/* Nav container spacing used in Navbar component */
+.nav-bar { background: #2563eb; color: #fff }
+.nav-inner { display:flex; align-items:center; justify-content:space-between; padding: .75rem 1rem; max-width:1200px; margin:0 auto }
+.nav-brand { font-weight:700; color: #fff; text-decoration: none; font-size: 1.125rem }
+.nav-links { display:flex; gap: 1rem; align-items:center }
+.nav-link { color: #fff; text-decoration: none; padding: 6px 8px; border-radius: 6px }
+.nav-link:hover { background: rgba(255,255,255,0.06) }
+
+.nav-auth .nav-link { color: rgba(255,255,255,0.92) }
+.nav-auth-btn { background: #fff; color: #2563eb; padding: 6px 10px; border-radius: 8px; text-decoration:none; font-weight:600 }
+.nav-auth-btn:hover { filter: brightness(.95) }
+
+/* Basic form/input visuals to match previous Tailwind appearance */
+input[type="text"], select, input[type="date"] { width:100%; border:1px solid #d1d5db; padding:.5rem .75rem; border-radius:.5rem; box-sizing:border-box }
+
+/* Make sure small inline icons keep reasonable size */
+.text-lg { font-size: 1.125rem }
+
+/* Chat widget floating bubble fallback */
+.chat-bubble { position: fixed; right: 18px; bottom: 18px; width: 56px; height: 56px; border-radius: 999px; background: linear-gradient(135deg,#06b6d4,#3b82f6); box-shadow:0 8px 30px rgba(2,6,23,0.12); display:flex; align-items:center; justify-content:center }
+
+/* small accessibility improvements */
+button:focus, a:focus { outline: 3px solid rgba(37,99,235,0.18); outline-offset: 2px }
+

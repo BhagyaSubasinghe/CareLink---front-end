@@ -9,13 +9,28 @@
 }
 
 .hero-content { max-width: 680px; }
-.hero-title { font-weight: 700; margin-bottom: 12px; }
+.hero-title { font-weight: 700; margin-bottom: 12px; font-size: 3.5rem; line-height: 1.02 }
 .hero-sub { color: #374151; margin-bottom: 18px; }
+.hero-search { margin-bottom: 18px }
 .hero-ctas { display:flex; gap:12px; align-items:center }
 .cta { border-radius: 8px; }
 .ghost { background: transparent; border: 1px solid rgba(55,65,81,0.08); }
 
 .hero-visual img { width:100%; border-radius: 12px; box-shadow: 0 12px 30px rgba(2,6,23,0.08); }
+
+/* Make hero image and content adapt nicely on larger screens */
+.hero {
+  align-items: center;
+}
+
+.hero-visual { display:flex; justify-content:center }
+
+/* Slightly overlap search on visual for wide screens */
+@media (min-width: 1100px) {
+  .hero { grid-template-columns: 1fr 520px; }
+  .hero-search { margin-right: 16px }
+  .hero-visual img { max-width: 520px }
+}
 
 .section-title { margin: 8px 0 16px 0; font-weight: 600 }
 .features-grid { margin-bottom: 28px }
@@ -23,6 +38,38 @@
 .feature-icon { font-size:24px }
 .feature-title { font-weight:600 }
 .feature-desc { color: #4b5563 }
+
+/* Search form specific styling */
+.search-form { display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding:10px 6px; background: transparent; box-shadow: none; border-radius: 10px }
+.search-field { position: relative; flex: 1 1 auto; min-width: 140px; height: 48px }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #0ea5a9; font-size: 20px; display:flex; align-items:center; z-index: 3; pointer-events: none }
+.search-icon svg { width: 20px; height: 20px; display:block }
+.search-input, .search-select { background: white; border: 1px solid #e6e9ee; padding: 10px 12px; border-radius: 8px; width: 100%; box-sizing: border-box; font-size: 0.95rem; height: 48px; line-height: 1 }
+.search-input { padding-left: 56px }
+.search-select { padding-left: 56px; appearance: none }
+.search-submit { background:#2563eb; color:white; border:none; padding: 8px 14px; border-radius: 8px; box-shadow: none; cursor:pointer }
+
+@media (max-width: 768px) {
+  .search-form { grid-template-columns: 1fr; display: grid }
+  .search-field { min-width: 0 }
+  .search-submit { width: 100% }
+}
+
+/* Hide native calendar icon so our custom icon shows consistently */
+input[type="date"] { -webkit-appearance: none; appearance: none }
+input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0; width: 0; height: 0 }
+/* Firefox specific reset */
+input[type="date"]::-moz-calendar-picker-indicator { display: none }
+
+/* Ensure icon and input alignness on small devices */
+.search-field .search-icon svg { display: block }
+
+.feature-card { border-radius: 10px; background: #fff; box-shadow: 0 8px 18px rgba(2,6,23,0.04) }
+
+/* slightly smaller title on medium screens */
+@media (max-width: 1100px) {
+  .hero-title { font-size: 2.75rem }
+}
 
 .doctors-preview { margin-top: 8px }
 
