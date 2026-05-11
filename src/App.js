@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ChatWidget from './components/ChatWidget';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -30,6 +31,7 @@ function App() {
           </Routes>
         </Container>
         <Footer />
+        <ChatWidget />
       </Box>
     </BrowserRouter>
   );

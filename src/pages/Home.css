@@ -1,0 +1,40 @@
+.home-root { padding: 32px 16px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.hero-content { max-width: 680px; }
+.hero-title { font-weight: 700; margin-bottom: 12px; }
+.hero-sub { color: #374151; margin-bottom: 18px; }
+.hero-ctas { display:flex; gap:12px; align-items:center }
+.cta { border-radius: 8px; }
+.ghost { background: transparent; border: 1px solid rgba(55,65,81,0.08); }
+
+.hero-visual img { width:100%; border-radius: 12px; box-shadow: 0 12px 30px rgba(2,6,23,0.08); }
+
+.section-title { margin: 8px 0 16px 0; font-weight: 600 }
+.features-grid { margin-bottom: 28px }
+.feature-card { padding: 20px; display:flex; flex-direction:column; gap:8px; align-items:flex-start }
+.feature-icon { font-size:24px }
+.feature-title { font-weight:600 }
+.feature-desc { color: #4b5563 }
+
+.doctors-preview { margin-top: 8px }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { order: -1 }
+  .hero-visual img { max-height: 260px; object-fit:cover }
+}
+
+@media (max-width: 480px) {
+  .home-root { padding: 20px 12px }
+  .hero-title { font-size: 1.5rem }
+  .hero-sub { font-size: .95rem }
+  .features-grid { gap: 12px }
+}
