@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Doctors from './pages/Doctors';
 import BookAppointment from './pages/BookAppointment';
 import Profile from './pages/Profile';
+import About from './pages/About';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/doctors" element={<Doctors />} />
+            <Route path="/about" element={<About />} />
             <Route path="/book" element={<BookAppointment />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
