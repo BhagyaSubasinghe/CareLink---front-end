@@ -1,0 +1,270 @@
+/* Login Page Styles */
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.login-card .MuiCardContent-root {
+  padding: 40px;
+}
+
+/* Header */
+.login-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.login-header h3 {
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Social Login */
+.social-login {
+  margin-bottom: 24px;
+}
+
+.social-btn {
+  text-transform: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-color: #e5e7eb;
+  color: #374151;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.social-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.google-btn {
+  color: #ea4335;
+}
+
+.google-btn:hover {
+  border-color: #ea4335;
+  background: #fef2f2;
+}
+
+.facebook-btn {
+  color: #1877f2;
+}
+
+.facebook-btn:hover {
+  border-color: #1877f2;
+  background: #f0f7ff;
+}
+
+/* Form */
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form .MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.login-form .MuiOutlinedInput-root {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.login-form .MuiOutlinedInput-root:hover {
+  border-color: #0ea5a9;
+}
+
+.login-form .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 3px rgba(14, 165, 169, 0.1);
+}
+
+.login-form .MuiOutlinedInput-input::placeholder {
+  color: #d1d5db;
+  opacity: 1;
+}
+
+.login-form input:-webkit-autofill,
+.login-form input:-webkit-autofill:hover,
+.login-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
+/* Input Icons */
+.login-form .MuiInputAdornment-positionStart {
+  margin-right: 12px;
+}
+
+/* Remember Me & Forgot Password */
+.login-form .MuiFormControlLabel-root {
+  user-select: none;
+}
+
+.login-form .MuiCheckbox-root {
+  color: #d1d5db;
+}
+
+.login-form .MuiCheckbox-root.Mui-checked {
+  color: #0ea5a9;
+}
+
+.login-form .MuiFormControlLabel-label {
+  font-size: 0.9rem;
+}
+
+/* Submit Button */
+.login-form .MuiButton-containedPrimary {
+  background: linear-gradient(135deg, #0ea5a9 0%, #0d9488 100%);
+  font-weight: 600;
+  text-transform: none;
+  box-shadow: 0 4px 12px rgba(14, 165, 169, 0.3);
+  transition: all 0.3s ease;
+}
+
+.login-form .MuiButton-containedPrimary:hover {
+  background: linear-gradient(135deg, #0d9488 0%, #0a7377 100%);
+  box-shadow: 0 6px 20px rgba(14, 165, 169, 0.4);
+  transform: translateY(-2px);
+}
+
+.login-form .MuiButton-containedPrimary:disabled {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+  box-shadow: none;
+}
+
+/* Footer Link */
+.login-card .MuiTypography-body2 {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.login-card a {
+  color: #0ea5a9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.login-card a:hover {
+  color: #0d9488;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 16px 12px;
+    min-height: auto;
+  }
+
+  .login-card .MuiCardContent-root {
+    padding: 24px;
+  }
+
+  .login-header {
+    margin-bottom: 20px;
+  }
+
+  .login-header h3 {
+    font-size: 1.75rem;
+  }
+
+  .login-header p {
+    font-size: 0.9rem;
+  }
+
+  .social-login {
+    margin-bottom: 16px;
+  }
+
+  .social-btn {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .login-form .MuiTextField-root {
+    margin-bottom: 12px;
+  }
+
+  .login-form .MuiButton-root {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .login-card .MuiCardContent-root {
+    padding: 20px;
+  }
+
+  .login-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .login-header p {
+    font-size: 0.85rem;
+  }
+
+  .social-btn {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
+
+  .social-btn .MuiSvgIcon-root {
+    font-size: 1.2rem;
+  }
+}
+
+/* Loading State */
+.login-form .MuiButton-root.Mui-disabled {
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Focus Styles for Accessibility */
+.login-form .MuiOutlinedInput-input:focus-visible,
+.login-form .MuiInputBase-input:focus-visible {
+  outline: 2px solid #0ea5a9;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .login-container,
+  .login-card {
+    display: none;
+  }
+}

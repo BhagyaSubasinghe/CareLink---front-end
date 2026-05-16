@@ -1,0 +1,362 @@
+/* Register Page Styles */
+
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px 16px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+}
+
+.register-card .MuiCardContent-root {
+  padding: 40px;
+}
+
+/* Header */
+.register-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.register-header h3 {
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.register-header p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Social Login */
+.social-login {
+  margin-bottom: 24px;
+}
+
+.social-btn {
+  text-transform: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-color: #e5e7eb;
+  color: #374151;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.social-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.google-btn {
+  color: #ea4335;
+}
+
+.google-btn:hover {
+  border-color: #ea4335;
+  background: #fef2f2;
+}
+
+.facebook-btn {
+  color: #1877f2;
+}
+
+.facebook-btn:hover {
+  border-color: #1877f2;
+  background: #f0f7ff;
+}
+
+/* Form */
+.register-form {
+  margin-top: 20px;
+}
+
+.register-form .MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.register-form .MuiOutlinedInput-root {
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.register-form .MuiOutlinedInput-root:hover {
+  border-color: #0ea5a9;
+}
+
+.register-form .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 3px rgba(14, 165, 169, 0.1);
+}
+
+.register-form .MuiOutlinedInput-input::placeholder {
+  color: #d1d5db;
+  opacity: 1;
+}
+
+.register-form input:-webkit-autofill,
+.register-form input:-webkit-autofill:hover,
+.register-form input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
+/* Input Icons */
+.register-form .MuiInputAdornment-positionStart {
+  margin-right: 12px;
+}
+
+/* Password Strength */
+.password-strength {
+  margin: 12px 0 16px 0;
+}
+
+.password-strength-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.password-requirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.requirement-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.requirement-item.met {
+  color: #10b981;
+  text-decoration: line-through;
+}
+
+/* Terms Agreement */
+.register-form .MuiFormControlLabel-root {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.register-form .MuiCheckbox-root {
+  color: #d1d5db;
+}
+
+.register-form .MuiCheckbox-root.Mui-checked {
+  color: #0ea5a9;
+}
+
+.register-form .MuiFormControlLabel-label {
+  font-size: 0.9rem;
+}
+
+.register-form .MuiFormControlLabel-label a {
+  color: #0ea5a9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.register-form .MuiFormControlLabel-label a:hover {
+  color: #0d9488;
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.register-form .MuiButton-containedPrimary {
+  background: linear-gradient(135deg, #0ea5a9 0%, #0d9488 100%);
+  font-weight: 600;
+  text-transform: none;
+  box-shadow: 0 4px 12px rgba(14, 165, 169, 0.3);
+  transition: all 0.3s ease;
+}
+
+.register-form .MuiButton-containedPrimary:hover {
+  background: linear-gradient(135deg, #0d9488 0%, #0a7377 100%);
+  box-shadow: 0 6px 20px rgba(14, 165, 169, 0.4);
+  transform: translateY(-2px);
+}
+
+.register-form .MuiButton-containedPrimary:disabled {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+  box-shadow: none;
+}
+
+/* Footer Links */
+.register-form + div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.register-form + div a {
+  color: #0ea5a9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-form + div a:hover {
+  color: #0d9488;
+}
+
+/* Forgot Password Link */
+.register-card .MuiButton-textSecondary {
+  text-transform: none;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.register-card .MuiButton-textSecondary:hover {
+  color: #0ea5a9;
+  background: transparent;
+}
+
+/* Success State */
+.success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  min-height: 400px;
+}
+
+.success-state h4 {
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.success-state p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.success-state .MuiLinearProgress-root {
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .register-container {
+    padding: 16px 12px;
+    min-height: auto;
+  }
+
+  .register-card .MuiCardContent-root {
+    padding: 24px;
+  }
+
+  .register-header {
+    margin-bottom: 20px;
+  }
+
+  .register-header h3 {
+    font-size: 1.75rem;
+  }
+
+  .register-header p {
+    font-size: 0.9rem;
+  }
+
+  .social-login {
+    margin-bottom: 16px;
+  }
+
+  .social-btn {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .register-form .MuiTextField-root {
+    margin-bottom: 12px;
+  }
+
+  .password-requirements {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .register-form .MuiButton-root {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .register-card .MuiCardContent-root {
+    padding: 20px;
+  }
+
+  .register-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .register-header p {
+    font-size: 0.85rem;
+  }
+
+  .social-btn {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+  }
+
+  .social-btn .MuiSvgIcon-root {
+    font-size: 1.2rem;
+  }
+}
+
+/* Loading State */
+.register-form .MuiButton-root.Mui-disabled {
+  cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-card {
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Focus Styles for Accessibility */
+.register-form .MuiOutlinedInput-input:focus-visible,
+.register-form .MuiInputBase-input:focus-visible {
+  outline: 2px solid #0ea5a9;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .register-container,
+  .register-card {
+    display: none;
+  }
+}
