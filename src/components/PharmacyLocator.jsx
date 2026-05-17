@@ -15,7 +15,7 @@ import {
 import {
   LocationOn,
   Phone,
-  Clock,
+  Schedule,
   Star,
   Navigation,
   Info,
@@ -195,7 +195,7 @@ export default function PharmacyLocator() {
                     </Box>
 
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                      <Clock sx={{ fontSize: '1.2rem', color: '#0ea5a9' }} />
+                      <Schedule sx={{ fontSize: '1.2rem', color: '#0ea5a9' }} />
                       <Typography variant="body2">{pharmacy.hours}</Typography>
                     </Box>
 

@@ -15,7 +15,7 @@ import {
   TextField,
   Alert,
 } from '@mui/material';
-import { Check, Info, ShoppingCart, RxRounded } from '@mui/icons-material';
+import { Check, Info, ShoppingCart, Receipt } from '@mui/icons-material';
 
 export default function MedicineCard({ medicine, onViewDetails, onAddToCart }) {
   const [quantity, setQuantity] = useState(1);
@@ -82,7 +82,7 @@ export default function MedicineCard({ medicine, onViewDetails, onAddToCart }) {
             />
             {medicine.requiresPrescription && (
               <Chip
-                icon={<RxRounded sx={{ fontSize: '1rem' }} />}
+                icon={<Receipt sx={{ fontSize: '1rem' }} />}
                 label="Rx Required"
                 size="small"
                 variant="outlined"
