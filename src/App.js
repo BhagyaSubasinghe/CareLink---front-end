@@ -14,6 +14,7 @@ import Doctors from './pages/Doctors';
 import BookAppointment from './pages/BookAppointment';
 import Profile from './pages/Profile';
 import About from './pages/About';
+import Contact from './pages/Contact';
 import Pharmacy from './pages/Pharmacy';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/book" element={<BookAppointment />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/pharmacy" element={<Pharmacy />} />
