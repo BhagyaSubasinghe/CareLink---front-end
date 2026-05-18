@@ -1,128 +1,200 @@
-import React, { useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import DoctorCard from '../components/DoctorCard';
-import SearchBar from '../components/SearchBar';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
-
-const sampleDoctors = [
-  { id: 1, name: 'Dr. Alice Smith', specialization: 'Cardiologist', rating: 4.8 },
-  { id: 2, name: 'Dr. Bob Lee', specialization: 'Dermatologist', rating: 4.6 },
-  { id: 3, name: 'Dr. Clara Zhou', specialization: 'Pediatrician', rating: 4.7 },
-];
+import heroStatic from '../assest/home/heroimage.jpg';
+import mashineImage from '../assest/home/mashineImage.jpg';
+import facility1 from '../assest/home/image1.jpg';
+import facility2 from '../assest/home/image2.jpg';
+import facility3 from '../assest/home/image3.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
-  const [selectedSpecialization, setSelectedSpecialization] = useState('');
-  const [selectedHospital, setSelectedHospital] = useState('');
-  const [selectedSearchDate, setSelectedSearchDate] = useState('');
+  const [doctorSearch, setDoctorSearch] = useState('');
+  const [locationSearch, setLocationSearch] = useState('');
+  const [heroImage, setHeroImage] = useState(null);
+  const fileInputRef = useRef(null);
 
-  const specializations = ['Cardiology', 'Dermatology', 'Pediatrics', 'Orthopedics'];
-  const hospitals = ['City Hospital', 'St. Marys', 'Central Clinic'];
+  useEffect(() => {
+    // if there is a static hero image in the repo, use it as default
+    if (!heroImage && typeof heroStatic === 'string') {
+      setHeroImage(heroStatic);
+    }
 
-  function onSearch(e) {
-    if (e && e.preventDefault) e.preventDefault();
+    return () => {
+      if (heroImage && heroImage.startsWith && heroImage.startsWith('blob:')) {
+        URL.revokeObjectURL(heroImage);
+      }
+    };
+  }, [heroImage]);
+
+  const handleFindDoctor = (e) => {
+    e.preventDefault();
     const params = new URLSearchParams();
-    if (search) params.set('q', search);
-    if (selectedSpecialization) params.set('spec', selectedSpecialization);
-    if (selectedHospital) params.set('hosp', selectedHospital);
-    if (selectedSearchDate) params.set('date', selectedSearchDate);
+    if (doctorSearch) params.set('q', doctorSearch);
+    if (locationSearch) params.set('location', locationSearch);
     navigate({ pathname: '/doctors', search: params.toString() });
-  }
+  };
+
   return (
-    <Container className="home-root">
-      <section className="hero">
-        <div className="hero-content">
-          <Typography variant="h2" component="h1" className="hero-title">
-            CareLink — healthcare booking made simple
-          </Typography>
-          <Typography variant="subtitle1" className="hero-sub">
-            Find trusted doctors, book appointments in seconds, and manage your care in one place.
-          </Typography>
-          <div className="hero-search">
-            <SearchBar
-              search={search}
-              setSearch={setSearch}
-              selectedSpecialization={selectedSpecialization}
-              setSelectedSpecialization={setSelectedSpecialization}
-              selectedHospital={selectedHospital}
-              setSelectedHospital={setSelectedHospital}
-              selectedSearchDate={selectedSearchDate}
-              setSelectedSearchDate={setSelectedSearchDate}
-              specializations={specializations}
-              hospitals={hospitals}
-              onSearch={onSearch}
-            />
+    <div className="home-root">
+      <div className="hero-banner">
+        <div className="hero-inner">
+          <div className="hero-left">
+            <div className="hero-badge">⚡ Trusted by 2M+ Patients</div>
+            <h1 className="hero-title">Expert Care for Your Most Precious Asset: <span className="accent-green">Your Health.</span></h1>
+            <p className="hero-sub">Access world-class healthcare with CareLink. Connect with top specialists, manage your pharmacy needs, and book emergency care instantly.</p>
+
+            <form onSubmit={handleFindDoctor} className="hero-search-wrap" aria-label="Find doctor">
+              <div className="hero-search-field">
+                <span className="icon-wrap">👨‍⚕️</span>
+                <input placeholder="Doctor name or specialty" value={doctorSearch} onChange={(e) => setDoctorSearch(e.target.value)} />
+              </div>
+              <div className="hero-search-field">
+                <span className="icon-wrap">📍</span>
+                <input placeholder="Select location" value={locationSearch} onChange={(e) => setLocationSearch(e.target.value)} />
+              </div>
+              <button className="hero-search-submit">Find a Doctor</button>
+            </form>
+
+            <div style={{marginTop:12}}>
+              <strong>⭐⭐⭐⭐⭐</strong> <span style={{color:'#374151', marginLeft:8}}>500+ Top Doctors Available</span>
+            </div>
           </div>
-          <div className="hero-ctas">
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              component={RouterLink}
-              to="/book"
-              className="cta"
-            >
-              Book Appointment
-            </Button>
-            <Button component={RouterLink} to="/doctors" className="cta ghost">
-              Find Doctors
-            </Button>
+
+          <div className="hero-visual">
+            <div className="visual-card" onClick={() => fileInputRef.current && fileInputRef.current.click()} style={{cursor:'pointer'}}>
+              <input ref={fileInputRef} type="file" accept="image/*" onChange={(e)=>{
+                const f = e.target.files && e.target.files[0];
+                if(f) setHeroImage(URL.createObjectURL(f));
+              }} style={{display:'none'}} />
+              {heroImage ? (
+                <img src={heroImage} alt="Uploaded hero" />
+              ) : (
+                <div style={{width:520,height:420,display:'flex',alignItems:'center',justifyContent:'center',color:'#94a3b8',fontWeight:700}}>
+                  Click to upload hero image
+                </div>
+              )}
+            </div>
+            <div className="floating-badge">
+              <div className="icon">👥</div>
+              <div className="meta">
+                <div className="count">500+</div>
+                <div className="label">Top Specialists</div>
+                <div className="progress"><div className="bar"></div></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="hero-visual" aria-hidden>
-          <img src="https://via.placeholder.com/520x340" alt="healthcare" />
+      </div>
+
+      <section className="facilities-section">
+        <div className="metrics-band top-metrics">
+          <div className="metric"><div className="metric-number">98%</div><div className="metric-label">Patient Satisfaction</div></div>
+          <div className="metric"><div className="metric-number">150+</div><div className="metric-label">Top-tier Awards</div></div>
+          <div className="metric"><div className="metric-number">12k+</div><div className="metric-label">Successful Surgeries</div></div>
+          <div className="metric"><div className="metric-number">24h</div><div className="metric-label">Emergency Response</div></div>
+        </div>
+
+        <div className="facilities-inner">
+          <h3 className="facilities-title">World-Class Facilities</h3>
+          <p className="facilities-sub">Step into an environment designed for healing, comfort, and professional excellence.</p>
+
+          <div className="facility-cards">
+            <div className="facility-card">
+              <img src={facility1} alt="Patient Lounge" />
+              <div className="facility-card-body">
+                <h4>Patient Lounge</h4>
+                <p>A calming space for families and patients designed with comfort in mind.</p>
+              </div>
+            </div>
+
+            <div className="facility-card">
+              <img src={facility2} alt="Surgical Suites" />
+              <div className="facility-card-body">
+                <h4>Surgical Suites</h4>
+                <p>Equipped with the latest robotic-assisted technology for minimally invasive procedures.</p>
+              </div>
+            </div>
+
+            <div className="facility-card">
+              <img src={facility3} alt="Private Recovery" />
+              <div className="facility-card-body">
+                <h4>Private Recovery Suites</h4>
+                <p>Hotel-standard rooms offering complete privacy and 24/7 dedicated nursing care.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <section className="features">
-        <Typography variant="h5" component="h2" className="section-title">
-          Why people choose CareLink
-        </Typography>
-        <Grid container spacing={2} className="features-grid">
-          <Grid item xs={12} md={4}>
-            <Paper className="feature-card">
-              <div className="feature-icon">🔒</div>
-              <Typography className="feature-title">Secure records</Typography>
-              <Typography className="feature-desc">Your health data is private and protected.</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper className="feature-card">
-              <div className="feature-icon">⚡</div>
-              <Typography className="feature-title">Fast booking</Typography>
-              <Typography className="feature-desc">Book appointments in under a minute.</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper className="feature-card">
-              <div className="feature-icon">🩺</div>
-              <Typography className="feature-title">Trusted doctors</Typography>
-              <Typography className="feature-desc">Verified specialists across many fields.</Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-      </section>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="feature-icon">🚑</div>
+            <div className="feature-title">Emergency Booking</div>
+            <div className="feature-desc">Critical care access 24/7. Immediate ambulance dispatch and trauma unit notification.</div>
+            <button style={{marginTop:12,background:'#ef4444',color:'#fff',padding:'10px 14px',borderRadius:10,border:0}}>Call Now</button>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">📅</div>
+            <div className="feature-title">Check Availability</div>
+            <div className="feature-desc">View real-time schedules for preferred doctors and book appointments instantly.</div>
+            <button onClick={() => navigate('/doctors')} style={{marginTop:12,background:'#0ea5a9',color:'#fff',padding:'10px 14px',borderRadius:10,border:0}}>Book Appointment</button>
+          </div>
+          <div className="feature-card">
+            <div className="feature-icon">💊</div>
+            <div className="feature-title">Online Pharmacy</div>
+            <div className="feature-desc">Order prescriptions and health supplies. Fast home delivery with professional consultation.</div>
+            <button style={{marginTop:12,background:'#059669',color:'#fff',padding:'10px 14px',borderRadius:10,border:0}}>Order Medicine</button>
+          </div>
+        </div>
 
-      <section className="doctors-preview">
-        <Typography variant="h5" component="h2" className="section-title">
-          Featured Doctors
-        </Typography>
-        <Grid container spacing={3}>
-          {sampleDoctors.map((d) => (
-            <Grid item xs={12} sm={6} md={4} key={d.id}>
-              <DoctorCard doctor={d} onBook={() => { window.location.href = '/book'; }} />
-            </Grid>
-          ))}
-        </Grid>
-      </section>
-    </Container>
+        <section className="detail-section">
+          <h2 className="detail-title">Excellence in Every Detail</h2>
+          <p className="detail-sub">We combine cutting-edge medical technology with a patient-first approach to redefine healthcare standards.</p>
+
+          <div className="detail-grid">
+            <div className="detail-image-card">
+              <img src={mashineImage} alt="Advanced diagnostic" />
+              <div className="detail-image-caption">
+                <h3>Advanced Diagnostic Tech</h3>
+                <p>Our facility is equipped with AI-powered diagnostic tools and next-generation imaging for precise and early detection.</p>
+              </div>
+            </div>
+
+            <div className="detail-right">
+              <div className="detail-info-card">
+                <h4>Patient–First Philosophy</h4>
+                <p>Beyond medicine, we focus on the human experience. Dedicated care coordinators ensure your journey is comfortable and informed at every step.</p>
+              </div>
+
+              <div className="detail-info-card detail-info-strong">
+                <h4>Integrated Digital Health</h4>
+                <p>Manage your health records, view test results, and message your care team through our secure, HIPAA-compliant portal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="metrics-band">
+            <div className="metric"><div className="metric-number">98%</div><div className="metric-label">Patient Satisfaction</div></div>
+            <div className="metric"><div className="metric-number">150+</div><div className="metric-label">Top-tier Awards</div></div>
+            <div className="metric"><div className="metric-number">12k+</div><div className="metric-label">Successful Surgeries</div></div>
+            <div className="metric"><div className="metric-number">24h</div><div className="metric-label">Emergency Response</div></div>
+          </div>
+        </section>
+
+        <div className="cta-band" style={{marginTop:28,background:'linear-gradient(90deg,#0ea5a9,#3b82f6)',color:'#fff'}}>
+          <h2 style={{fontSize:28,fontWeight:800}}>Ready to Take Control of Your Health?</h2>
+          <p style={{marginTop:8,opacity:0.95}}>Join thousands of patients who trust CareLink for their healthcare needs.</p>
+          <div style={{marginTop:16,display:'flex',gap:12,justifyContent:'center'}}>
+            <button onClick={() => navigate('/doctors')} style={{background:'#fff',color:'#0ea5a9',padding:'10px 18px',borderRadius:10,fontWeight:700}}>Find a Doctor</button>
+            <button style={{background:'transparent',border:'2px solid #fff',color:'#fff',padding:'10px 18px',borderRadius:10,fontWeight:700}}>Learn More</button>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
   );
 }
