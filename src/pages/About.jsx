@@ -1,98 +1,83 @@
 import React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Stack from '@mui/material/Stack';
 import './About.css';
-
-function ServiceCard({ icon, title, desc }) {
-  return (
-    <Card className="service-card" elevation={1}>
-      <CardContent>
-        <div className="service-icon">{icon}</div>
-        <Typography variant="h6" className="service-title">{title}</Typography>
-        <Typography className="service-desc">{desc}</Typography>
-      </CardContent>
-    </Card>
-  );
-}
+import hospitalImg from '../assest/aboutus/hospital.jpg';
+import doctorImg from '../assest/aboutus/doctor.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export default function About() {
-  const services = [
-    { icon: '🩺', title: 'Verified Doctors', desc: 'Search verified profiles, specialties and ratings.' },
-    { icon: '💬', title: 'Telehealth', desc: 'Secure online consultations with qualified providers.' },
-    { icon: '⏰', title: 'Reminders & Scheduling', desc: 'Automated reminders and easy rescheduling.' },
-    { icon: '🔐', title: 'Secure Records', desc: 'Encrypted storage for prescriptions and records.' },
-  ];
-
-  const faqs = [
-    { q: 'How do you verify doctors?', a: 'We verify licenses and clinic affiliations before listing.' },
-    { q: 'Is my data private?', a: 'Yes — we store records securely and never share without consent.' },
-    { q: 'Can I consult online?', a: 'Yes — telehealth options are available for many providers.' },
-  ];
+  const navigate = useNavigate();
 
   return (
-    <Container className="about-root">
-      <section className="about-hero">
-        <div className="about-text">
-          <Typography variant="h3" component="h1" className="about-title">About CareLink</Typography>
-          <Typography variant="body1" className="about-lead">We make healthcare simpler by connecting you with verified providers, offering flexible telehealth, and keeping your records secure — all from one place.</Typography>
+    <div className="about-root">
+      <header className="about-hero">
+        <img src={hospitalImg} alt="Hospital facade" className="about-hero-img" />
+        <div className="about-hero-content">
+          <h1>Compassionate Care, Clinical Excellence.</h1>
+          <p>We combine state-of-the-art medical technology with a deeply human, patient-first approach to redefine healthcare experiences.</p>
+          <button className="btn-primary" onClick={() => navigate('/contact')}>Our Mission</button>
+        </div>
+      </header>
 
-          <div className="services-grid-wrap">
-            <Grid container spacing={2}>
-              {services.map((s) => (
-                <Grid item xs={12} sm={6} md={3} key={s.title}>
-                  <ServiceCard icon={s.icon} title={s.title} desc={s.desc} />
-                </Grid>
-              ))}
-            </Grid>
-          </div>
-
+      <section className="about-intro">
+        <div className="intro-text">
+          <h2>A Legacy of Commitment</h2>
+          <p>
+            CareLink has been growing with a simple but profound mission: to provide accessible, patient-centric healthcare
+            that treats the person, not just the symptoms. Founded by a group of dedicated practitioners, our journey started
+            with a single clinic and a promise to serve our community with compassion and excellence.
+          </p>
+          <p>
+            Today, CareLink combines clinical expertise with modern technology to deliver reliable, evidence-based care across
+            a growing network of facilities.
+          </p>
         </div>
 
-        <div className="about-visual" aria-hidden>
-          <img src="https://via.placeholder.com/520x340?text=CareLink" alt="CareLink" />
+        <div className="intro-media">
+          <div className="media-card">
+            <img src={doctorImg} alt="Doctor" />
+            <div className="media-pin">Patient-Centric Focus</div>
+          </div>
         </div>
       </section>
 
-      <section className="how-it-works">
-        <Typography variant="h5" component="h2" className="section-title">How it works</Typography>
-        <Stack direction="row" spacing={2} className="steps-row">
-          <div className="step">
-            <div className="step-bubble">1</div>
-            <div className="step-text">Search doctors</div>
+      <section className="pillars">
+        <h3 className="pillars-title">The Pillars of CareLink</h3>
+        <div className="pillar-cards">
+          <div className="pillar-card">
+            <div className="pillar-icon">🛡️</div>
+            <h4>Integrity</h4>
+            <p>We uphold the highest ethical standards, ensuring transparent care and trusted partnerships.</p>
           </div>
-          <div className="step">
-            <div className="step-bubble">2</div>
-            <div className="step-text">Choose service</div>
-          </div>
-          <div className="step">
-            <div className="step-bubble">3</div>
-            <div className="step-text">Get care</div>
-          </div>
-        </Stack>
-      </section>
 
-      <section className="about-values">
-        <Typography variant="h5" component="h2" className="section-title">Frequently asked</Typography>
-        <div className="faq-list">
-          {faqs.map((f) => (
-            <Accordion key={f.q}>
-              <AccordionSummary expandIcon={<span>▾</span>}>
-                <Typography className="faq-q">{f.q}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography className="faq-a">{f.a}</Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
+          <div className="pillar-card">
+            <div className="pillar-icon">💡</div>
+            <h4>Innovation</h4>
+            <p>Leveraging cutting-edge medical technology to improve outcomes and patient experiences.</p>
+          </div>
+
+          <div className="pillar-card">
+            <div className="pillar-icon">🤝</div>
+            <h4>Inclusion</h4>
+            <p>Delivering respectful, equitable care to every person who walks through our doors.</p>
+          </div>
         </div>
       </section>
-    </Container>
+
+      <div className="about-metrics">
+        <div className="metric"> 
+          <div className="metric-number">20+</div>
+          <div className="metric-label">Years of Service</div>
+        </div>
+        <div className="metric"> 
+          <div className="metric-number">1M+</div>
+          <div className="metric-label">Patients Treated</div>
+        </div>
+        <div className="metric"> 
+          <div className="metric-number">500+</div>
+          <div className="metric-label">Specialist Doctors</div>
+        </div>
+      </div>
+    </div>
   );
 }
+

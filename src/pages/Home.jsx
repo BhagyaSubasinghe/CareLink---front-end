@@ -155,9 +155,9 @@ export default function Home() {
           <p className="detail-sub">We combine cutting-edge medical technology with a patient-first approach to redefine healthcare standards.</p>
 
           <div className="detail-grid">
-            <div className="detail-image-card">
+            <div className="detail-image-card full-bleed-image" role="img" aria-label="Advanced diagnostic imaging">
               <img src={mashineImage} alt="Advanced diagnostic" />
-              <div className="detail-image-caption">
+              <div className="full-bleed-caption">
                 <h3>Advanced Diagnostic Tech</h3>
                 <p>Our facility is equipped with AI-powered diagnostic tools and next-generation imaging for precise and early detection.</p>
               </div>
